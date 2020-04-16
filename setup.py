@@ -21,11 +21,11 @@ from setuptools import setup
 
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
-
+WINDOWS = sys.platform == 'win32' or sys.platform == 'cygwin'
 
 description = ("Thrift SASL Python module that implements SASL transports for "
                "Thrift (`TSaslClientTransport`).")
-requirements = ['sasl>=0.2.1']
+requirements = ['pure-sasl>=0.3.0' if WINDOWS else 'sasl>=0.2.1']
 
 if PY2:
     requirements.append('thrift')
